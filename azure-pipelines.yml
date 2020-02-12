@@ -1,0 +1,22 @@
+
+# specific path build
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - azure-pipelines.yml
+    - src/*
+    exclude:
+    - README.md
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Npm@1
+  inputs:
+    command: publish
+    workingDir: src
+    publishEndpoint: 'npmjs'
