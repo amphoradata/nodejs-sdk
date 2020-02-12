@@ -1,0 +1,15 @@
+## AutoRest configuration ...
+add-credentials: true
+override-client-name: Client
+PackageName: spmetjing
+nodejs: 
+  - output-folder: src
+    package-name: amphoradata
+    package-version: "0.7.1"
+use:
+  - "@microsoft.azure/autorest-core@3.0.5537"
+  - "@microsoft.azure/autorest.nodejs@2.1.128"
+directive:
+- from: swagger-document
+  where: $..*[?(@.additionalProperties == false)]
+  transform: $.additionalProperties = undefined;
