@@ -1,2 +1,2 @@
-# javascript-sdk
-A JavaScript SDK for Amphora Data
+# nodejs-sdk
+A NodeJS SDK for Amphora Data
