@@ -2,7 +2,7 @@
     "name": "amphoradata",
     "author": "Amphora Data",
     "description": "Client Library with typescript type definitions for node",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "dependencies": {
       "ms-rest": "^2.3.3"
     },

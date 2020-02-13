@@ -4,7 +4,7 @@
  * regenerated.
  */
 
-import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions } from 'ms-rest';
 import * as models from "./models";
 import * as operations from "./operations";
 
@@ -13,8 +13,6 @@ export default class Client extends ServiceClient {
    * @class
    * Initializes a new instance of the Client class.
    * @constructor
-   *
-   * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -28,9 +26,7 @@ export default class Client extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
-
-  credentials: ServiceClientCredentials;
+  constructor(baseUri?: string, options?: ServiceClientOptions);
 
   // Operation groups
   authentication: operations.Authentication;

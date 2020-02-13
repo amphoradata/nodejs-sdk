@@ -21,7 +21,6 @@ const operations = require('./operations');
 class Client extends ServiceClient {
   /**
    * Create a Client.
-   * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    * @param {string} [baseUri] - The base URI of the service.
    * @param {object} [options] - The parameter options
    * @param {Array} [options.filters] - Filters to be added to the request pipeline
@@ -29,20 +28,16 @@ class Client extends ServiceClient {
    * {@link https://github.com/request/request#requestoptions-callback Options doc}
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    */
-  constructor(credentials, baseUri, options) {
-    if (credentials === null || credentials === undefined) {
-      throw new Error('\'credentials\' cannot be null.');
-    }
+  constructor(baseUri, options) {
 
     if (!options) options = {};
 
-    super(credentials, options);
+    super(null, options);
 
     this.baseUri = baseUri;
     if (!this.baseUri) {
       this.baseUri = 'https://app.amphoradata.com';
     }
-    this.credentials = credentials;
 
     let packageInfo = this.getPackageJsonInfo(__dirname);
     this.addUserAgentInfo(`${packageInfo.name}/${packageInfo.version}`);
