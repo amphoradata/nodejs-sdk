@@ -9,6 +9,6 @@
   "author": "Rian Finnegan",
   "license": "ISC",
   "dependencies": {
-    "ms-rest": "^2.5.3"
+    "amphoradata": "file:../src/sdk"
   }
 }

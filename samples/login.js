@@ -1,16 +1,22 @@
-var client = new (require("../src/lib/client")).Client();
-
+// import Amphoradata from 'amphoradata';
+import {ApiClient} from 'amphoradata';
 const username = process.env["username"];
 const password = process.env["password"];
 
+var client = new ApiClient()
+var x = new ad.AmphoraeApi()
+let authApi = new ad.AuthenticationApi();
+
 // async main function
 (async function main() {
-    var token = await client.authentication.requestToken(
-        { username, password },
-        { customHeaders: { "accept": "application/json" } }); // there's an issue where autorest can't decode without this header
+    var token = await authApi.authenticationRequestToken({ username, password });
 
     console.log("got a token " + token);
-    const options = { customHeaders: { "Authorization": "Bearer " + token } };
-    var self = await client.users.readSelf(options);
+
+    let usersApi = new Amphoradata.UsersApi();
+    let Bearer = defaultClient.authentications['Bearer'];
+    Bearer.apiKey = 'YOUR API KEY';
+    Bearer.apiKeyPrefix = 'Token';
+    var self = await usersApi.usersReadSelf();
     console.log(self)
 })()
