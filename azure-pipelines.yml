@@ -17,6 +17,10 @@ pool:
 steps:
 - task: Npm@1
   inputs:
+    command: install
+    workingDir: src/sdk
+- task: Npm@1
+  inputs:
     command: publish
     workingDir: src/sdk
     publishEndpoint: 'npmjs'
