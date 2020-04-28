@@ -18,9 +18,9 @@ steps:
 - task: Npm@1
   inputs:
     command: install
-    workingDir: src/sdk
+    workingDir: src
 - task: Npm@1
   inputs:
     command: publish
-    workingDir: src/sdk
+    workingDir: src
     publishEndpoint: 'npmjs'
