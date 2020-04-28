@@ -1,7 +1,7 @@
-rm -rf generated/src
-rm -rf generated/test
-rm -rf generated/docs
-rm -rf generated/dist
+rm -rf src/sdk/node_modules
+rm -rf src/lib
+rm -rf src/sdk
+
 docker-compose run generator
 
 pushd src/sdk

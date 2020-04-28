@@ -9,6 +9,6 @@
   "author": "Rian Finnegan",
   "license": "ISC",
   "dependencies": {
-    "amphoradata": "file:../src/sdk"
+    "amphoradata": "file:../src"
   }
 }

@@ -4,4 +4,4 @@ services:
     image: openapitools/openapi-generator-cli:v4.2.0
     volumes: 
       - ${PWD}/src:/local
-    command: generate -i https://app.amphoradata.com/swagger/v1/swagger.json -g javascript -o /local/sdk -c local/config.yaml --skip-validate-spec
+    command: generate -i https://app.amphoradata.com/swagger/v1/swagger.json -g typescript-axios -o /local/sdk --skip-validate-spec --enable-post-process-file

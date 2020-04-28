@@ -1,0 +1,40 @@
+{
+  "name": "amphoradata",
+  "version": "0.9.8-dev1",
+  "description": "A typescript library for Amphora Data",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel sdk --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amphoradata/nodejs-sdk.git"
+  },
+  "keywords": [
+    "amphora"
+  ],
+  "author": "Rian Finnegan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amphoradata/nodejs-sdk/issues"
+  },
+  "homepage": "https://github.com/amphoradata/nodejs-sdk#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "request": "^2.88.2",
+    "url": "^0.11.0"
+  }
+}
