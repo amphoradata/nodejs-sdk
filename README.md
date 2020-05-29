@@ -29,3 +29,8 @@ authApi.authenticationRequestToken({username: username, password: password})
     .then(r => console.log(`token: ${r.data}`))
     .catch(e => console.log("An Error Occurred"))
 ```
+
+## Generating the SDK from the OpenAPI spec
+
+1. Set the version in [package.json](src/package-lock.json)
+2. Run `./generate/.sh` to update the sdk.
