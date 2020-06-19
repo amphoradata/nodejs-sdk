@@ -450,6 +450,144 @@ export interface AmphoraUserAllOf {
 /**
  * 
  * @export
+ * @interface AppLocation
+ */
+export interface AppLocation {
+    /**
+     * Gets or sets the expected origin from a XMLHttpRequest Must not end in \'/\'.
+     * @type {string}
+     * @memberof AppLocation
+     */
+    origin?: string | null;
+    /**
+     * Gets or sets allowed redirects after login, relative to Origin. Must begin with a \'/\'.
+     * @type {Array<string>}
+     * @memberof AppLocation
+     */
+    allowedRedirectPaths?: Array<string> | null;
+    /**
+     * Gets or sets the allowed redirect after logout. Must be an absolute url.
+     * @type {Array<string>}
+     * @memberof AppLocation
+     */
+    postLogoutRedirects?: Array<string> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppLocation
+     */
+    id?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface AppLocationAllOf
+ */
+export interface AppLocationAllOf {
+    /**
+     * 
+     * @type {string}
+     * @memberof AppLocationAllOf
+     */
+    id?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface AppLocationBase
+ */
+export interface AppLocationBase {
+    /**
+     * Gets or sets the expected origin from a XMLHttpRequest Must not end in \'/\'.
+     * @type {string}
+     * @memberof AppLocationBase
+     */
+    origin?: string | null;
+    /**
+     * Gets or sets allowed redirects after login, relative to Origin. Must begin with a \'/\'.
+     * @type {Array<string>}
+     * @memberof AppLocationBase
+     */
+    allowedRedirectPaths?: Array<string> | null;
+    /**
+     * Gets or sets the allowed redirect after logout. Must be an absolute url.
+     * @type {Array<string>}
+     * @memberof AppLocationBase
+     */
+    postLogoutRedirects?: Array<string> | null;
+}
+/**
+ * 
+ * @export
+ * @interface Application
+ */
+export interface Application {
+    /**
+     * Gets or sets the name of your application. Will be shown on the consent page.
+     * @type {string}
+     * @memberof Application
+     */
+    name?: string | null;
+    /**
+     * Gets or sets a url for front channel HTTP logouts.
+     * @type {string}
+     * @memberof Application
+     */
+    logoutUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Application
+     */
+    id?: string | null;
+    /**
+     * Gets or sets a collection of locations your application will run.
+     * @type {Array<AppLocation>}
+     * @memberof Application
+     */
+    locations?: Array<AppLocation> | null;
+}
+/**
+ * 
+ * @export
+ * @interface ApplicationAllOf
+ */
+export interface ApplicationAllOf {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApplicationAllOf
+     */
+    id?: string | null;
+    /**
+     * Gets or sets a collection of locations your application will run.
+     * @type {Array<AppLocation>}
+     * @memberof ApplicationAllOf
+     */
+    locations?: Array<AppLocation> | null;
+}
+/**
+ * 
+ * @export
+ * @interface ApplicationBase
+ */
+export interface ApplicationBase {
+    /**
+     * Gets or sets the name of your application. Will be shown on the consent page.
+     * @type {string}
+     * @memberof ApplicationBase
+     */
+    name?: string | null;
+    /**
+     * Gets or sets a url for front channel HTTP logouts.
+     * @type {string}
+     * @memberof ApplicationBase
+     */
+    logoutUrl?: string | null;
+}
+/**
+ * 
+ * @export
  * @interface AttributeStore
  */
 export interface AttributeStore {
@@ -775,6 +913,51 @@ export interface CreateAmphoraUserAllOf {
      * @memberof CreateAmphoraUserAllOf
      */
     email: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateAppLocation
+ */
+export interface CreateAppLocation extends AppLocationBase {
+}
+/**
+ * 
+ * @export
+ * @interface CreateApplication
+ */
+export interface CreateApplication {
+    /**
+     * Gets or sets the name of your application. Will be shown on the consent page.
+     * @type {string}
+     * @memberof CreateApplication
+     */
+    name?: string | null;
+    /**
+     * Gets or sets a url for front channel HTTP logouts.
+     * @type {string}
+     * @memberof CreateApplication
+     */
+    logoutUrl?: string | null;
+    /**
+     * Gets or sets a collection of locations your application will run.
+     * @type {Array<CreateAppLocation>}
+     * @memberof CreateApplication
+     */
+    locations?: Array<CreateAppLocation> | null;
+}
+/**
+ * 
+ * @export
+ * @interface CreateApplicationAllOf
+ */
+export interface CreateApplicationAllOf {
+    /**
+     * Gets or sets a collection of locations your application will run.
+     * @type {Array<CreateAppLocation>}
+     * @memberof CreateApplicationAllOf
+     */
+    locations?: Array<CreateAppLocation> | null;
 }
 /**
  * 
@@ -1938,19 +2121,6 @@ export interface TermsOfUse {
      * 
      * @type {string}
      * @memberof TermsOfUse
-     */
-    id?: string | null;
-}
-/**
- * 
- * @export
- * @interface TermsOfUseAllOf
- */
-export interface TermsOfUseAllOf {
-    /**
-     * 
-     * @type {string}
-     * @memberof TermsOfUseAllOf
      */
     id?: string | null;
 }
@@ -5400,6 +5570,307 @@ export class AmphoraeApi extends BaseAPI {
      */
     public purchasesPurchase(id: string, xAmphoradataVersion?: string, options?: any) {
         return AmphoraeApiFp(this.configuration).purchasesPurchase(id, xAmphoradataVersion, options)(this.axios, this.basePath);
+    }
+
+}
+
+
+/**
+ * ApplicationsApi - axios parameter creator
+ * @export
+ */
+export const ApplicationsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Creates a new application. Applications are external websites that Amphora users can sign in to.
+         * @param {CreateApplication} createApplication An application to create.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication(createApplication: CreateApplication, xAmphoradataVersion?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'createApplication' is not null or undefined
+            if (createApplication === null || createApplication === undefined) {
+                throw new RequiredError('createApplication','Required parameter createApplication was null or undefined when calling applicationsCreateApplication.');
+            }
+            const localVarPath = `/api/applications`;
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (xAmphoradataVersion !== undefined && xAmphoradataVersion !== null) {
+                localVarHeaderParameter['x-amphoradata-version'] = String(xAmphoradataVersion);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
+            const needsSerialization = (typeof createApplication !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createApplication !== undefined ? createApplication : {}) : (createApplication || "");
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Gets an application by Id, if it exists.
+         * @param {string} id The id of the application to get.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication2(id: string, xAmphoradataVersion?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling applicationsCreateApplication2.');
+            }
+            const localVarPath = `/api/applications/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (xAmphoradataVersion !== undefined && xAmphoradataVersion !== null) {
+                localVarHeaderParameter['x-amphoradata-version'] = String(xAmphoradataVersion);
+            }
+
+
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Deletes an application. Must be done by an Organisation administrator.
+         * @param {string} id The application id to delete.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsDeleteApplication(id: string, xAmphoradataVersion?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling applicationsDeleteApplication.');
+            }
+            const localVarPath = `/api/applications/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (xAmphoradataVersion !== undefined && xAmphoradataVersion !== null) {
+                localVarHeaderParameter['x-amphoradata-version'] = String(xAmphoradataVersion);
+            }
+
+
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ApplicationsApi - functional programming interface
+ * @export
+ */
+export const ApplicationsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Creates a new application. Applications are external websites that Amphora users can sign in to.
+         * @param {CreateApplication} createApplication An application to create.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication(createApplication: CreateApplication, xAmphoradataVersion?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application> {
+            const localVarAxiosArgs = ApplicationsApiAxiosParamCreator(configuration).applicationsCreateApplication(createApplication, xAmphoradataVersion, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Gets an application by Id, if it exists.
+         * @param {string} id The id of the application to get.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication2(id: string, xAmphoradataVersion?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application> {
+            const localVarAxiosArgs = ApplicationsApiAxiosParamCreator(configuration).applicationsCreateApplication2(id, xAmphoradataVersion, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Deletes an application. Must be done by an Organisation administrator.
+         * @param {string} id The application id to delete.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsDeleteApplication(id: string, xAmphoradataVersion?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application> {
+            const localVarAxiosArgs = ApplicationsApiAxiosParamCreator(configuration).applicationsDeleteApplication(id, xAmphoradataVersion, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+    }
+};
+
+/**
+ * ApplicationsApi - factory interface
+ * @export
+ */
+export const ApplicationsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Creates a new application. Applications are external websites that Amphora users can sign in to.
+         * @param {CreateApplication} createApplication An application to create.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication(createApplication: CreateApplication, xAmphoradataVersion?: string, options?: any) {
+            return ApplicationsApiFp(configuration).applicationsCreateApplication(createApplication, xAmphoradataVersion, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Gets an application by Id, if it exists.
+         * @param {string} id The id of the application to get.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsCreateApplication2(id: string, xAmphoradataVersion?: string, options?: any) {
+            return ApplicationsApiFp(configuration).applicationsCreateApplication2(id, xAmphoradataVersion, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Deletes an application. Must be done by an Organisation administrator.
+         * @param {string} id The application id to delete.
+         * @param {string} [xAmphoradataVersion] API Version Number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationsDeleteApplication(id: string, xAmphoradataVersion?: string, options?: any) {
+            return ApplicationsApiFp(configuration).applicationsDeleteApplication(id, xAmphoradataVersion, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * ApplicationsApi - object-oriented interface
+ * @export
+ * @class ApplicationsApi
+ * @extends {BaseAPI}
+ */
+export class ApplicationsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Creates a new application. Applications are external websites that Amphora users can sign in to.
+     * @param {CreateApplication} createApplication An application to create.
+     * @param {string} [xAmphoradataVersion] API Version Number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApplicationsApi
+     */
+    public applicationsCreateApplication(createApplication: CreateApplication, xAmphoradataVersion?: string, options?: any) {
+        return ApplicationsApiFp(this.configuration).applicationsCreateApplication(createApplication, xAmphoradataVersion, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Gets an application by Id, if it exists.
+     * @param {string} id The id of the application to get.
+     * @param {string} [xAmphoradataVersion] API Version Number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApplicationsApi
+     */
+    public applicationsCreateApplication2(id: string, xAmphoradataVersion?: string, options?: any) {
+        return ApplicationsApiFp(this.configuration).applicationsCreateApplication2(id, xAmphoradataVersion, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Deletes an application. Must be done by an Organisation administrator.
+     * @param {string} id The application id to delete.
+     * @param {string} [xAmphoradataVersion] API Version Number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApplicationsApi
+     */
+    public applicationsDeleteApplication(id: string, xAmphoradataVersion?: string, options?: any) {
+        return ApplicationsApiFp(this.configuration).applicationsDeleteApplication(id, xAmphoradataVersion, options)(this.axios, this.basePath);
     }
 
 }

@@ -32,5 +32,5 @@ authApi.authenticationRequestToken({username: username, password: password})
 
 ## Generating the SDK from the OpenAPI spec
 
-1. Set the version in [package.json](src/package-lock.json)
+1. Set the version in [package.json](src/package.json)
 2. Run `./generate/.sh` to update the sdk.
