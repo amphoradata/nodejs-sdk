@@ -1,6 +1,6 @@
 {
     "name": "amphoradata",
-    "version": "0.10.6-dev.1",
+    "version": "0.10.6-dev.2",
     "description": "A typescript library for Amphora Data",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
