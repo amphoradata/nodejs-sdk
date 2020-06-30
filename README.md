@@ -1,3 +1,5 @@
+[![NPM](https://img.shields.io/npm/v/amphoradata.svg)](https://www.npmjs.com/package/amphoradata)
+
 # Amphora Data SDK for Javascript, Typescript, and Node
 
 This SDK uses [Axios](https://github.com/axios/axios) as an HTTP client.
