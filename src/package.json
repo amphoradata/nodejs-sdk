@@ -5,6 +5,7 @@
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {
+        "analyze": "source-map-explorer 'lib/*.js'",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch",
         "build": "npm run build:types && npm run build:js",
@@ -31,6 +32,7 @@
         "@babel/plugin-proposal-export-default-from": "^7.10.4",
         "@babel/preset-env": "^7.11.0",
         "@babel/preset-typescript": "^7.10.4",
+        "source-map-explorer": "^2.4.2",
         "typescript": "^3.9.7"
     },
     "dependencies": {

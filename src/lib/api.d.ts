@@ -3680,7 +3680,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeAccessControlsGetOrganisationRules(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OrganisationAccessRule[]>;
+    amphoraeAccessControlsGetOrganisationRules(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<OrganisationAccessRule>>;
     /**
      *
      * @summary Get\'s the list of access rules applied to users.
@@ -3688,7 +3688,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeAccessControlsGetUserRules(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<UserAccessRule[]>;
+    amphoraeAccessControlsGetUserRules(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<UserAccessRule>>;
     /**
      *
      * @summary Creates a new empty Amphora in the user\'s organisation.
@@ -3743,7 +3743,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeFilesListFiles(id: string, orderBy?: string | undefined, prefix?: string | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string[]>;
+    amphoraeFilesListFiles(id: string, orderBy?: string | undefined, prefix?: string | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<string>>;
     /**
      *
      * @summary Queries an Amphora\'s files.
@@ -3752,7 +3752,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeFilesQueryFiles(id: string, fileQueryOptions: FileQueryOptions, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string[]>;
+    amphoraeFilesQueryFiles(id: string, fileQueryOptions: FileQueryOptions, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<string>>;
     /**
      *
      * @summary Get\'s the attributes of a file.
@@ -3787,7 +3787,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeList(scope?: string | undefined, accessType?: string | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<DetailedAmphora[]>;
+    amphoraeList(scope?: string | undefined, accessType?: string | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<DetailedAmphora>>;
     /**
      *
      * @summary Gets details of an Amphora by Id.
@@ -3821,7 +3821,7 @@ export declare const AmphoraeApiFp: (configuration?: Configuration | undefined) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    amphoraeSignalsGetSignals(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Signal[]>;
+    amphoraeSignalsGetSignals(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<Signal>>;
     /**
      *
      * @summary Associates a signal with an Amphora. Signal is created if not existing.
@@ -4901,7 +4901,7 @@ export declare const InvitationsApiFp: (configuration?: Configuration | undefine
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    invitationsReadMyInvitations(options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Invitation[]>;
+    invitationsReadMyInvitations(options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<Invitation>>;
 };
 /**
  * InvitationsApi - factory interface
@@ -5107,7 +5107,7 @@ export declare const OrganisationsApiFp: (configuration?: Configuration | undefi
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    organisationsReadInvitations(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Invitation[]>;
+    organisationsReadInvitations(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<Invitation>>;
     /**
      *
      * @summary Get\'s a list of an Organisation\'s Terms of Use.
@@ -5115,7 +5115,7 @@ export declare const OrganisationsApiFp: (configuration?: Configuration | undefi
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    organisationsTermsOfUseRead(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<TermsOfUse[]>;
+    organisationsTermsOfUseRead(id: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<TermsOfUse>>;
     /**
      *
      * @summary Updates an organisation.
@@ -5435,7 +5435,7 @@ export declare const SearchApiFp: (configuration?: Configuration | undefined) =>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    searchSearchAmphorae(term?: string | undefined, labels?: string | undefined, orgId?: string | undefined, lat?: number | undefined, lon?: number | undefined, dist?: number | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<BasicAmphora[]>;
+    searchSearchAmphorae(term?: string | undefined, labels?: string | undefined, orgId?: string | undefined, lat?: number | undefined, lon?: number | undefined, dist?: number | undefined, take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<BasicAmphora>>;
     /**
      *
      * @summary Searches for Organisations with fuzzy search.
@@ -5443,7 +5443,7 @@ export declare const SearchApiFp: (configuration?: Configuration | undefined) =>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    searchSearchOrganisations(term?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organisation[]>;
+    searchSearchOrganisations(term?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<Organisation>>;
 };
 /**
  * SearchApi - factory interface
@@ -5591,7 +5591,7 @@ export declare const TermsOfUseApiFp: (configuration?: Configuration | undefined
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    termsOfUseList(take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<TermsOfUse[]>;
+    termsOfUseList(take?: number | undefined, skip?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Array<TermsOfUse>>;
     /**
      *
      * @summary Returns all Terms of Use.
